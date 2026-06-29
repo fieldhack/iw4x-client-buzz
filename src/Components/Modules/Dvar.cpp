@@ -446,6 +446,17 @@ namespace Components
 		// remove write protection from fs_game
 		Utils::Hook::Xor<std::uint32_t>(0x6431EA, Game::DVAR_INIT);
 
+		// bypass read-only check
+		Utils::Hook::Nop(0x6475AA, 6);
+		Utils::Hook::Set<std::uint8_t>(0x6475B0, 0xEB);
+
+		// bypass write-protect check
+		Utils::Hook::Nop(0x64760E, 6);
+		Utils::Hook::Set<std::uint8_t>(0x647614, 0xEB);
+
+		// bypass cannot be changed check
+		Utils::Hook::Set<std::uint8_t>(0x647781, 0xEB);
+
 		// set cg_fov max to 160.0
 		// because that's the max on SP
 		static float cg_Fov = 160.0f;
