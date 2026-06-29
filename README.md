@@ -1,6 +1,6 @@
 # IW4x: Client
 
-A small IW4x fork to test feature development.
+A small IW4x fork to test feature development. Currently only bypasses protections on DVARs to allow protected commands in private matches.
 
 ## Disclaimer
 
